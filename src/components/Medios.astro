@@ -1,0 +1,373 @@
+---
+const trailerUrl = "https://www.youtube.com/watch?v=E-_-3Y3YGRA";
+
+// Gallery images from /public/images/gallery
+const galleryImages = [
+  { src: "/images/gallery/CREADORES_1.1.1.jpg", alt: "Serie Creadores - Escena 1" },
+  { src: "/images/gallery/CREADORES_1.152.1.jpg", alt: "Serie Creadores - Escena 2" },
+  { src: "/images/gallery/CREADORES_2.1.1.jpg", alt: "Serie Creadores - Escena 3" },
+  { src: "/images/gallery/CREADORES_2.1.2.jpg", alt: "Serie Creadores - Escena 4" },
+  { src: "/images/gallery/CREADORES_2.1.3.jpg", alt: "Serie Creadores - Escena 5" },
+  { src: "/images/gallery/CREADORES_2.1.4.jpg", alt: "Serie Creadores - Escena 6" },
+  { src: "/images/gallery/CREADORES_3.1.1.jpg", alt: "Serie Creadores - Escena 7" },
+  { src: "/images/gallery/CREADORES_3.1.2.jpg", alt: "Serie Creadores - Escena 8" },
+  { src: "/images/gallery/CREADORES_3.2.1.jpg", alt: "Serie Creadores - Escena 9" },
+  { src: "/images/gallery/CREADORES_3.3.1.jpg", alt: "Serie Creadores - Escena 10" },
+  { src: "/images/gallery/CREADORES_3.4.1.jpg", alt: "Serie Creadores - Escena 11" },
+  { src: "/images/gallery/CREADORES_3.5.1.jpg", alt: "Serie Creadores - Escena 12" },
+  { src: "/images/gallery/CREADORES_3.6.1.jpg", alt: "Serie Creadores - Escena 13" },
+  { src: "/images/gallery/CREADORES_3.7.1.jpg", alt: "Serie Creadores - Escena 14" },
+  { src: "/images/gallery/CREADORES_3.8.1.jpg", alt: "Serie Creadores - Escena 15" },
+  { src: "/images/gallery/CREADORES_3.9.1.jpg", alt: "Serie Creadores - Escena 16" },
+  { src: "/images/gallery/DSC00683.jpg", alt: "Behind the Scenes - Producción" },
+  { src: "/images/gallery/DSC00686.jpg", alt: "Behind the Scenes - Equipo" },
+  { src: "/images/gallery/DSC00700.jpg", alt: "Behind the Scenes - Locación" },
+  { src: "/images/gallery/DSC00703.jpg", alt: "Behind the Scenes - Cámara" },
+  { src: "/images/gallery/DSC00736.jpg", alt: "Behind the Scenes - Entrevista" },
+  { src: "/images/gallery/DSC01168.jpg", alt: "Retrato - Desarrollador 1" },
+  { src: "/images/gallery/DSC01178.jpg", alt: "Retrato - Desarrollador 2" },
+  { src: "/images/gallery/DSC01182.jpg", alt: "Retrato - Desarrollador 3" },
+  { src: "/images/gallery/DSC01189.jpg", alt: "Retrato - Desarrollador 4" },
+  { src: "/images/gallery/DSC01198.jpg", alt: "Retrato - Desarrollador 5" },
+  { src: "/images/gallery/DSC01201.jpg", alt: "Retrato - Desarrollador 6" },
+  { src: "/images/gallery/DSC01202.jpg", alt: "Retrato - Desarrollador 7" },
+  { src: "/images/gallery/DSC01207.jpg", alt: "Retrato - Desarrollador 8" },
+  { src: "/images/gallery/DSC01219.jpg", alt: "Retrato - Desarrollador 9" },
+  { src: "/images/gallery/DSC01224.jpg", alt: "Retrato - Desarrollador 10" },
+  { src: "/images/gallery/DSC01227.jpg", alt: "Retrato - Desarrollador 11" },
+  { src: "/images/gallery/DSC01239.jpg", alt: "Retrato - Desarrollador 12" },
+  { src: "/images/gallery/DSC01247.jpg", alt: "Retrato - Desarrollador 13" },
+  { src: "/images/gallery/DSC01270.jpg", alt: "Retrato - Desarrollador 14" },
+  { src: "/images/gallery/DSC01271.jpg", alt: "Retrato - Desarrollador 15" },
+  { src: "/images/gallery/DSC01277.jpg", alt: "Retrato - Desarrollador 16" },
+  { src: "/images/gallery/DSC01287.jpg", alt: "Retrato - Desarrollador 17" },
+  { src: "/images/gallery/DSC01292.jpg", alt: "Retrato - Desarrollador 18" },
+  { src: "/images/gallery/DSC01293.jpg", alt: "Retrato - Desarrollador 19" },
+  { src: "/images/gallery/DSC01295.jpg", alt: "Retrato - Desarrollador 20" },
+  { src: "/images/gallery/DSC01296.jpg", alt: "Retrato - Desarrollador 21" },
+  { src: "/images/gallery/DSC01304.jpg", alt: "Retrato - Desarrollador 22" },
+  { src: "/images/gallery/DSC01478.jpg", alt: "Locación - Estudio 1" },
+  { src: "/images/gallery/DSC01495.jpg", alt: "Locación - Estudio 2" },
+  { src: "/images/gallery/DSC01511.jpg", alt: "Locación - Oficina 1" },
+  { src: "/images/gallery/DSC01531.jpg", alt: "Locación - Oficina 2" },
+  { src: "/images/gallery/DSC01533.jpg", alt: "Locación - Oficina 3" },
+  { src: "/images/gallery/DSC01535.jpg", alt: "Locación - Oficina 4" },
+  { src: "/images/gallery/DSC01537.jpg", alt: "Locación - Oficina 5" },
+  { src: "/images/gallery/DSC01539.jpg", alt: "Locación - Oficina 6" },
+  { src: "/images/gallery/DSC01550.jpg", alt: "Locación - Oficina 7" },
+  { src: "/images/gallery/DSC01553.jpg", alt: "Locación - Oficina 8" },
+  { src: "/images/gallery/DSC01560.jpg", alt: "Locación - Oficina 9" },
+  { src: "/images/gallery/DSC01562.jpg", alt: "Locación - Oficina 10" },
+  { src: "/images/gallery/DSC01567.jpg", alt: "Locación - Oficina 11" },
+  { src: "/images/gallery/DSC01569.jpg", alt: "Locación - Oficina 12" },
+  { src: "/images/gallery/DSC01570.jpg", alt: "Locación - Oficina 13" },
+  { src: "/images/gallery/DSC01574.jpg", alt: "Locación - Oficina 14" },
+  { src: "/images/gallery/DSC01582.jpg", alt: "Locación - Oficina 15" },
+  { src: "/images/gallery/DSC01584.jpg", alt: "Locación - Oficina 16" },
+  { src: "/images/gallery/DSC01594.jpg", alt: "Locación - Oficina 17" },
+  { src: "/images/gallery/DSC01595.jpg", alt: "Locación - Oficina 18" },
+  { src: "/images/gallery/DSC01599.jpg", alt: "Locación - Oficina 19" },
+  { src: "/images/gallery/DSC01608.jpg", alt: "Locación - Oficina 20" },
+  { src: "/images/gallery/DSC01617.jpg", alt: "Locación - Oficina 21" },
+  { src: "/images/gallery/DSC01618.jpg", alt: "Locación - Oficina 22" },
+  { src: "/images/gallery/DSC01622.jpg", alt: "Locación - Oficina 23" },
+  { src: "/images/gallery/DSC01626.jpg", alt: "Locación - Oficina 24" },
+  { src: "/images/gallery/DSC01631.jpg", alt: "Locación - Oficina 25" },
+  { src: "/images/gallery/DSC01638.jpg", alt: "Locación - Oficina 26" },
+  { src: "/images/gallery/DSC01639.jpg", alt: "Locación - Oficina 27" },
+  { src: "/images/gallery/DSC01823.jpg", alt: "Locación - Oficina 28" }
+];
+---
+
+<section id="medios" class="py-20 bg-background-primary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-gaming font-bold text-white mb-6">
+        Medios
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+    </div>
+
+    <!-- Video Content -->
+    <div class="mb-16">
+      <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-8 text-center">
+        Video Content
+      </h3>
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h4 class="text-xl font-gaming font-bold text-white mb-4">Tráiler Oficial</h4>
+          <p class="text-text-secondary mb-6">
+            Descubre la historia detrás de los desarrolladores de videojuegos chilenos. 
+            Un viaje íntimo a través de sus sueños, frustraciones y la esperanza de convertirse 
+            en verdaderos creadores.
+          </p>
+          <a
+            href={trailerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-6 py-3 bg-primary hover:bg-secondary text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+            </svg>
+            Ver en YouTube
+          </a>
+        </div>
+        <div class="bg-background-secondary rounded-lg overflow-hidden shadow-2xl">
+          <div class="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <h5 class="text-lg font-gaming font-bold text-white mb-2">Tráiler Oficial</h5>
+              <p class="text-text-secondary text-sm">Disponible en YouTube</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div>
+      <h3 class="text-2xl md:text-3xl font-gaming font-bold text-secondary mb-8 text-center">
+        Galería de Imágenes
+      </h3>
+      <div class="mb-8 text-center">
+        <p class="text-text-secondary mb-4">
+          Imágenes de producción, behind the scenes, retratos del equipo y más contenido exclusivo.
+        </p>
+        <p class="text-text-secondary text-sm">
+          Haz clic en cualquier imagen para verla en tamaño completo
+        </p>
+      </div>
+
+                    <!-- Image Grid with Lightbox -->
+        <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+          {galleryImages.slice(0, 8).map((image) => (
+                        <a 
+               href={image.src} 
+               class="gallery-item group relative aspect-square rounded-lg overflow-hidden border border-border hover:border-primary transition-all duration-300 transform hover:scale-105 cursor-pointer"
+               title={image.alt}
+             >
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                class="w-full h-full object-cover"
+                loading="eager"
+              >
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+             <!-- Explore Gallery Button -->
+       <div class="text-center">
+         <p class="text-text-secondary text-sm mb-4">
+           Haz clic en cualquier imagen para explorar toda la galería
+         </p>
+         <button 
+           id="exploreGalleryBtn"
+           class="inline-flex items-center px-6 py-3 bg-secondary hover:bg-primary text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105"
+         >
+           <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+             <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+           </svg>
+           Explorar Galería Completa
+         </button>
+       </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Gallery images data
+  const galleryImages = [
+    { src: "/images/gallery/CREADORES_1.1.1.jpg", alt: "Serie Creadores - Escena 1" },
+    { src: "/images/gallery/CREADORES_1.152.1.jpg", alt: "Serie Creadores - Escena 2" },
+    { src: "/images/gallery/CREADORES_2.1.1.jpg", alt: "Serie Creadores - Escena 3" },
+    { src: "/images/gallery/CREADORES_2.1.2.jpg", alt: "Serie Creadores - Escena 4" },
+    { src: "/images/gallery/CREADORES_2.1.3.jpg", alt: "Serie Creadores - Escena 5" },
+    { src: "/images/gallery/CREADORES_2.1.4.jpg", alt: "Serie Creadores - Escena 6" },
+    { src: "/images/gallery/CREADORES_3.1.1.jpg", alt: "Serie Creadores - Escena 7" },
+    { src: "/images/gallery/CREADORES_3.1.2.jpg", alt: "Serie Creadores - Escena 8" },
+    { src: "/images/gallery/CREADORES_3.2.1.jpg", alt: "Serie Creadores - Escena 9" },
+    { src: "/images/gallery/CREADORES_3.3.1.jpg", alt: "Serie Creadores - Escena 10" },
+    { src: "/images/gallery/CREADORES_3.4.1.jpg", alt: "Serie Creadores - Escena 11" },
+    { src: "/images/gallery/CREADORES_3.5.1.jpg", alt: "Serie Creadores - Escena 12" },
+    { src: "/images/gallery/CREADORES_3.6.1.jpg", alt: "Serie Creadores - Escena 13" },
+    { src: "/images/gallery/CREADORES_3.7.1.jpg", alt: "Serie Creadores - Escena 14" },
+    { src: "/images/gallery/CREADORES_3.8.1.jpg", alt: "Serie Creadores - Escena 15" },
+    { src: "/images/gallery/CREADORES_3.9.1.jpg", alt: "Serie Creadores - Escena 16" },
+    { src: "/images/gallery/DSC00683.jpg", alt: "Behind the Scenes - Producción" },
+    { src: "/images/gallery/DSC00686.jpg", alt: "Behind the Scenes - Equipo" },
+    { src: "/images/gallery/DSC00700.jpg", alt: "Behind the Scenes - Locación" },
+    { src: "/images/gallery/DSC00703.jpg", alt: "Behind the Scenes - Cámara" },
+    { src: "/images/gallery/DSC00736.jpg", alt: "Behind the Scenes - Entrevista" },
+    { src: "/images/gallery/DSC01168.jpg", alt: "Retrato - Desarrollador 1" },
+    { src: "/images/gallery/DSC01178.jpg", alt: "Retrato - Desarrollador 2" },
+    { src: "/images/gallery/DSC01182.jpg", alt: "Retrato - Desarrollador 3" },
+    { src: "/images/gallery/DSC01189.jpg", alt: "Retrato - Desarrollador 4" },
+    { src: "/images/gallery/DSC01198.jpg", alt: "Retrato - Desarrollador 5" },
+    { src: "/images/gallery/DSC01201.jpg", alt: "Retrato - Desarrollador 6" },
+    { src: "/images/gallery/DSC01202.jpg", alt: "Retrato - Desarrollador 7" },
+    { src: "/images/gallery/DSC01207.jpg", alt: "Retrato - Desarrollador 8" },
+    { src: "/images/gallery/DSC01219.jpg", alt: "Retrato - Desarrollador 9" },
+    { src: "/images/gallery/DSC01224.jpg", alt: "Retrato - Desarrollador 10" },
+    { src: "/images/gallery/DSC01227.jpg", alt: "Retrato - Desarrollador 11" },
+    { src: "/images/gallery/DSC01239.jpg", alt: "Retrato - Desarrollador 12" },
+    { src: "/images/gallery/DSC01247.jpg", alt: "Retrato - Desarrollador 13" },
+    { src: "/images/gallery/DSC01270.jpg", alt: "Retrato - Desarrollador 14" },
+    { src: "/images/gallery/DSC01271.jpg", alt: "Retrato - Desarrollador 15" },
+    { src: "/images/gallery/DSC01277.jpg", alt: "Retrato - Desarrollador 16" },
+    { src: "/images/gallery/DSC01287.jpg", alt: "Retrato - Desarrollador 17" },
+    { src: "/images/gallery/DSC01292.jpg", alt: "Retrato - Desarrollador 18" },
+    { src: "/images/gallery/DSC01293.jpg", alt: "Retrato - Desarrollador 19" },
+    { src: "/images/gallery/DSC01295.jpg", alt: "Retrato - Desarrollador 20" },
+    { src: "/images/gallery/DSC01296.jpg", alt: "Retrato - Desarrollador 21" },
+    { src: "/images/gallery/DSC01304.jpg", alt: "Retrato - Desarrollador 22" },
+    { src: "/images/gallery/DSC01478.jpg", alt: "Locación - Estudio 1" },
+    { src: "/images/gallery/DSC01495.jpg", alt: "Locación - Estudio 2" },
+    { src: "/images/gallery/DSC01511.jpg", alt: "Locación - Oficina 1" },
+    { src: "/images/gallery/DSC01531.jpg", alt: "Locación - Oficina 2" },
+    { src: "/images/gallery/DSC01533.jpg", alt: "Locación - Oficina 3" },
+    { src: "/images/gallery/DSC01535.jpg", alt: "Locación - Oficina 4" },
+    { src: "/images/gallery/DSC01537.jpg", alt: "Locación - Oficina 5" },
+    { src: "/images/gallery/DSC01539.jpg", alt: "Locación - Oficina 6" },
+    { src: "/images/gallery/DSC01550.jpg", alt: "Locación - Oficina 7" },
+    { src: "/images/gallery/DSC01553.jpg", alt: "Locación - Oficina 8" },
+    { src: "/images/gallery/DSC01560.jpg", alt: "Locación - Oficina 9" },
+    { src: "/images/gallery/DSC01562.jpg", alt: "Locación - Oficina 10" },
+    { src: "/images/gallery/DSC01567.jpg", alt: "Locación - Oficina 11" },
+    { src: "/images/gallery/DSC01569.jpg", alt: "Locación - Oficina 12" },
+    { src: "/images/gallery/DSC01570.jpg", alt: "Locación - Oficina 13" },
+    { src: "/images/gallery/DSC01574.jpg", alt: "Locación - Oficina 14" },
+    { src: "/images/gallery/DSC01582.jpg", alt: "Locación - Oficina 15" },
+    { src: "/images/gallery/DSC01584.jpg", alt: "Locación - Oficina 16" },
+    { src: "/images/gallery/DSC01594.jpg", alt: "Locación - Oficina 17" },
+    { src: "/images/gallery/DSC01595.jpg", alt: "Locación - Oficina 18" },
+    { src: "/images/gallery/DSC01599.jpg", alt: "Locación - Oficina 19" },
+    { src: "/images/gallery/DSC01608.jpg", alt: "Locación - Oficina 20" },
+    { src: "/images/gallery/DSC01617.jpg", alt: "Locación - Oficina 21" },
+    { src: "/images/gallery/DSC01618.jpg", alt: "Locación - Oficina 22" },
+    { src: "/images/gallery/DSC01622.jpg", alt: "Locación - Oficina 23" },
+    { src: "/images/gallery/DSC01626.jpg", alt: "Locación - Oficina 24" },
+    { src: "/images/gallery/DSC01631.jpg", alt: "Locación - Oficina 25" },
+    { src: "/images/gallery/DSC01638.jpg", alt: "Locación - Oficina 26" },
+    { src: "/images/gallery/DSC01639.jpg", alt: "Locación - Oficina 27" },
+    { src: "/images/gallery/DSC01823.jpg", alt: "Locación - Oficina 28" }
+  ];
+
+  // Custom Lightbox Implementation
+  document.addEventListener('DOMContentLoaded', function() {
+    let currentImageIndex = 0;
+    let currentImages = galleryImages; // All images available in lightbox
+    
+    // Create lightbox modal
+    const lightboxModal = document.createElement('div');
+    lightboxModal.id = 'lightbox-modal';
+    lightboxModal.className = 'fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center';
+    lightboxModal.innerHTML = `
+      <div class="relative max-w-4xl max-h-full mx-4">
+        <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 z-10">&times;</button>
+        <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-10">&lt;</button>
+        <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-10">&gt;</button>
+        <div class="text-center">
+          <img id="lightbox-image" class="max-w-full max-h-[80vh] object-contain" src="" alt="">
+          <div id="lightbox-caption" class="text-white mt-4 text-lg"></div>
+          <div id="lightbox-counter" class="text-white mt-2 text-sm opacity-75"></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(lightboxModal);
+
+    // Lightbox functions
+    function openLightbox(index: number) {
+      currentImageIndex = index;
+      updateLightboxImage();
+      lightboxModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function updateLightboxImage() {
+      const image = currentImages[currentImageIndex];
+      const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+      const lightboxCaption = document.getElementById('lightbox-caption') as HTMLElement;
+      const lightboxCounter = document.getElementById('lightbox-counter') as HTMLElement;
+      
+      if (lightboxImage && image) {
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        lightboxCaption.textContent = image.alt;
+        lightboxCounter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
+      }
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+      updateLightboxImage();
+    }
+
+    function prevImage() {
+      currentImageIndex = currentImageIndex === 0 ? currentImages.length - 1 : currentImageIndex - 1;
+      updateLightboxImage();
+    }
+
+    // Event listeners
+    document.getElementById('close-lightbox')?.addEventListener('click', closeLightbox);
+    document.getElementById('prev-image')?.addEventListener('click', prevImage);
+    document.getElementById('next-image')?.addEventListener('click', nextImage);
+    
+    // Close on overlay click
+    lightboxModal.addEventListener('click', function(e) {
+      if (e.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (!lightboxModal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+      }
+    });
+
+    // Add click handlers to gallery items
+    function addGalleryClickHandlers() {
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          openLightbox(index);
+        });
+      });
+    }
+
+    // Initialize gallery click handlers
+    addGalleryClickHandlers();
+
+    // Explore gallery button functionality
+    const exploreGalleryBtn = document.getElementById('exploreGalleryBtn');
+    if (exploreGalleryBtn) {
+      exploreGalleryBtn.addEventListener('click', function() {
+        // Open lightbox with the first image to start exploring
+        openLightbox(0);
+      });
+    }
+  });
+</script> 

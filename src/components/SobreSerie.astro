@@ -1,0 +1,101 @@
+---
+const trailerUrl = "https://www.youtube.com/watch?v=E-_-3Y3YGRA";
+---
+
+<section id="sobre" class="py-20 bg-background-secondary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-gaming font-bold text-white mb-6">
+        Sobre la Serie
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Content -->
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-4">
+            La Historia
+          </h3>
+          <p class="text-text-secondary text-lg leading-relaxed mb-6">
+            El videojuego como aventura y cocreación. Esta serie documental explora los avatares de la industria chilena, 
+            desde la falta de apoyo y desconocimiento hasta las frustraciones que enfrentan los desarrolladores.
+          </p>
+          <p class="text-text-secondary text-lg leading-relaxed">
+            Pero también muestra la esperanza de convertirse en verdaderos creadores, superando las barreras 
+            y construyendo una industria desde nuestro país.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-2xl md:text-3xl font-gaming font-bold text-secondary mb-4">
+            Contexto de la Industria
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-background-primary p-6 rounded-lg border border-border">
+              <div class="text-3xl font-gaming font-bold text-primary mb-2">179B</div>
+              <div class="text-text-secondary">USD Industria Mundial</div>
+            </div>
+            <div class="bg-background-primary p-6 rounded-lg border border-border">
+              <div class="text-3xl font-gaming font-bold text-secondary mb-2">240M</div>
+              <div class="text-text-secondary">USD Industria Chilena</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-4">
+            Carta del Director
+          </h3>
+          <blockquote class="border-l-4 border-primary pl-6 italic text-text-secondary text-lg">
+            "Como videojugador desde los 10 años, he experimentado el poder del lenguaje de los videojuegos. 
+            Esta serie es un homenaje a los creadores chilenos que persisten en sus sueños, 
+            recordando las memorias colectivas de lugares como Game House en Viña del Mar."
+          </blockquote>
+          <p class="text-text-secondary mt-4">— Sebastián Cartajena, Director</p>
+        </div>
+      </div>
+
+      <!-- Video Section -->
+      <div class="space-y-6">
+        <div class="bg-background-primary rounded-lg overflow-hidden shadow-2xl">
+          <div class="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <h4 class="text-xl font-gaming font-bold text-white mb-2">Tráiler Oficial</h4>
+              <p class="text-text-secondary mb-4">Descubre la historia detrás de los creadores</p>
+              <a
+                href={trailerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center px-6 py-3 bg-primary hover:bg-secondary text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105"
+              >
+                <span>Ver Tráiler</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Industry Stats -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-background-primary p-4 rounded-lg text-center border border-border">
+            <div class="text-2xl font-gaming font-bold text-primary">200</div>
+            <div class="text-text-secondary text-sm">Estudios en 10 años</div>
+          </div>
+          <div class="bg-background-primary p-4 rounded-lg text-center border border-border">
+            <div class="text-2xl font-gaming font-bold text-secondary">70</div>
+            <div class="text-text-secondary text-sm">Han publicado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

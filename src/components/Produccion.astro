@@ -1,0 +1,153 @@
+---
+const timeline = [
+  {
+    year: "2021",
+    title: "Financiamiento Inicial",
+    description: "Fondo de Fortalecimiento - Ministerio de las Culturas",
+    status: "completed"
+  },
+  {
+    year: "2022",
+    title: "Desarrollo de Escritura",
+    description: "Escritura del primer capítulo e investigación",
+    status: "completed"
+  },
+  {
+    year: "2022",
+    title: "Selección Webseries",
+    description: "Seleccionado para webseries documental",
+    status: "completed"
+  },
+  {
+    year: "2023-2025",
+    title: "Producción en Curso",
+    description: "Producción de 6 capítulos",
+    status: "current"
+  },
+  {
+    year: "2025",
+    title: "Estreno Esperado",
+    description: "Segundo semestre de 2025",
+    status: "upcoming"
+  }
+];
+---
+
+<section id="produccion" class="py-20 bg-background-primary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-gaming font-bold text-white mb-6">
+        Producción
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+    </div>
+
+    <!-- Current Status -->
+    <div class="bg-background-secondary rounded-lg p-8 mb-16 border border-border">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-4">
+            Estado Actual
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-success rounded-full animate-pulse"></div>
+              <span class="text-text-secondary">Financiamiento: Fondo Audiovisual del Ministerio de las Culturas</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+              <span class="text-text-secondary">Desarrollo 2021-2022: Escritura del primer capítulo e investigación</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-secondary rounded-full animate-pulse"></div>
+              <span class="text-text-secondary">Producción actual: 6 capítulos en desarrollo</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-warning rounded-full animate-pulse"></div>
+              <span class="text-text-secondary">Estreno esperado: Segundo semestre de 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="text-6xl font-gaming font-bold text-primary mb-4">6</div>
+          <div class="text-text-secondary text-xl">Capítulos en Producción</div>
+          <div class="mt-4">
+            <div class="w-full bg-background-primary rounded-full h-3">
+              <div class="bg-gradient-to-r from-primary to-secondary h-3 rounded-full" style="width: 60%"></div>
+            </div>
+            <div class="text-text-secondary text-sm mt-2">60% Completado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div>
+      <h3 class="text-2xl md:text-3xl font-gaming font-bold text-white mb-8 text-center">
+        Cronología del Proyecto
+      </h3>
+      <div class="relative">
+        <!-- Timeline line -->
+        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-border"></div>
+        
+        <div class="space-y-8">
+          {timeline.map((item, index) => (
+            <div class={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              <!-- Timeline dot -->
+              <div class={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-background-primary z-10 ${
+                item.status === 'completed' ? 'bg-success' :
+                item.status === 'current' ? 'bg-primary animate-pulse' :
+                'bg-text-secondary'
+              }`}></div>
+              
+              <!-- Content -->
+              <div class={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
+                <div class="bg-background-secondary p-6 rounded-lg border border-border hover:border-primary transition-colors duration-300">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-2xl font-gaming font-bold text-primary">{item.year}</span>
+                    {item.status === 'current' && (
+                      <span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">
+                        EN CURSO
+                      </span>
+                    )}
+                  </div>
+                  <h4 class="text-xl font-gaming font-bold text-white mb-2">{item.title}</h4>
+                  <p class="text-text-secondary">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Funding Info -->
+    <div class="mt-16 text-center">
+      <h3 class="text-2xl md:text-3xl font-gaming font-bold text-white mb-8">
+        Financiamiento
+      </h3>
+      <div class="bg-background-secondary rounded-lg p-8 border border-border">
+        <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+          <div class="text-center">
+            <div class="w-24 h-24 rounded-lg flex items-center justify-center mx-auto mb-4 overflow-hidden">
+              <a href="https://www.cultura.gob.cl/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/images/logos/Logo_del_Ministerio_de_las_Culturas,_las_Artes_y_el_Patrimonio_de_Chile.png"
+                alt="Logo del Ministerio de las Culturas, las Artes y el Patrimonio de Chile"
+                class="object-contain w-24 h-24"
+                loading="lazy"
+                width="96"
+                height="96"
+              />
+              </a>
+            </div>
+            <a href="https://www.cultura.gob.cl/" target="_blank" rel="noopener noreferrer">
+              <div class="text-text-secondary">Fondo Audiovisual</div>
+              <div class="text-text-secondary">Ministerio de las Culturas, las Artes y el Patrimonio</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

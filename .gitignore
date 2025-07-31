@@ -1,0 +1,55 @@
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.cache/
+.next/
+out/
+docs/
+.vercel/
+.vercel_build_output/
+.env
+.env.*
+.DS_Store
+
+# Astro
+astro.config.mjs
+/.astro/
+
+# VSCode
+.vscode/
+
+# Mac
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Test coverage
+coverage/
+
+# Misc
+*.local
+*.swp
+*.swo
+*.tmp
+
+# Optional: ignore production images (uncomment if needed)
+# public/images/

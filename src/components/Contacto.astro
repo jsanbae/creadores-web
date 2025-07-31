@@ -1,0 +1,205 @@
+---
+const socialLinks = [
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@creadores-series",
+    icon: `<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>`
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/creadores_series",
+    icon: `<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323c-.875.807-2.026 1.297-3.323 1.297zm7.718-1.297c-.875.807-2.026 1.297-3.323 1.297s-2.448-.49-3.323-1.297c-.807-.875-1.297-2.026-1.297-3.323s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323z"/>
+    </svg>`
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/creadores_series",
+    icon: `<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+    </svg>`
+  }
+];
+---
+
+<section id="contacto" class="py-20 bg-background-primary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-gaming font-bold text-white mb-6">
+        Contacto
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div>
+        <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-8">
+          Envíanos un Mensaje
+        </h3>
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="nombre" class="block text-text-secondary font-medium mb-2">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                class="w-full px-4 py-3 bg-background-secondary border border-border rounded-lg text-white placeholder-text-secondary focus:border-primary focus:outline-none transition-colors duration-300"
+                placeholder="Tu nombre"
+                required
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-text-secondary font-medium mb-2">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full px-4 py-3 bg-background-secondary border border-border rounded-lg text-white placeholder-text-secondary focus:border-primary focus:outline-none transition-colors duration-300"
+                placeholder="tu@email.com"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label for="asunto" class="block text-text-secondary font-medium mb-2">Asunto</label>
+            <select
+              id="asunto"
+              name="asunto"
+              class="w-full px-4 py-3 bg-background-secondary border border-border rounded-lg text-white focus:border-primary focus:outline-none transition-colors duration-300"
+              required
+            >
+              <option value="">Selecciona un asunto</option>
+              <option value="consulta">Consulta General</option>
+              <option value="prensa">Solicitud de Prensa</option>
+              <option value="colaboracion">Colaboración</option>
+              <option value="kit-medios">Kit de Medios</option>
+            </select>
+          </div>
+          <div>
+            <label for="mensaje" class="block text-text-secondary font-medium mb-2">Mensaje</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="6"
+              class="w-full px-4 py-3 bg-background-secondary border border-border rounded-lg text-white placeholder-text-secondary focus:border-primary focus:outline-none transition-colors duration-300 resize-none"
+              placeholder="Escribe tu mensaje aquí..."
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full px-8 py-4 bg-primary hover:bg-secondary text-white font-bold text-lg rounded-lg transition-all duration-300 transform hover:scale-105"
+          >
+            <span class="flex items-center justify-center space-x-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Enviar Mensaje</span>
+            </span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-gaming font-bold text-secondary mb-8">
+            Información de Contacto
+          </h3>
+          <div class="space-y-6">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-white font-bold">Email</div>
+                <div class="text-text-secondary">ciudadcultural.cl@gmail.com</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-white font-bold">Teléfono</div>
+                <div class="text-text-secondary">+56 963047502</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-white font-bold">Empresa</div>
+                <div class="text-text-secondary">Ciudad Cultural Producciones Spa</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div>
+          <h4 class="text-xl font-gaming font-bold text-white mb-6">Síguenos</h4>
+          <div class="flex space-x-4">
+            {socialLinks.map((social) => (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-12 h-12 bg-background-secondary border border-border rounded-lg flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary transition-all duration-300 transform hover:scale-110"
+                title={social.name}
+                set:html={social.icon}
+              >
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-xl font-gaming font-bold text-white mb-6">Enlaces Rápidos</h4>
+          <div class="space-y-3">
+            <a
+              href="#sobre"
+              class="flex items-center space-x-3 text-text-secondary hover:text-primary transition-colors duration-300"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+              </svg>
+              <span>Sobre la Serie</span>
+            </a>
+            <a
+              href="#medios"
+              class="flex items-center space-x-3 text-text-secondary hover:text-primary transition-colors duration-300"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+              </svg>
+              <span>Galería de Medios</span>
+            </a>
+            <a
+              href="#prensa"
+              class="flex items-center space-x-3 text-text-secondary hover:text-primary transition-colors duration-300"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm3 2h6v4H7V6zm8 8H5v-2h10v2z" clip-rule="evenodd" />
+              </svg>
+              <span>Kit de Prensa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

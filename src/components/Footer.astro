@@ -1,0 +1,159 @@
+---
+const currentYear = new Date().getFullYear();
+const socialLinks = [
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@creadores-series",
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>`
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/creadores_series",
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323c-.875.807-2.026 1.297-3.323 1.297zm7.718-1.297c-.875.807-2.026 1.297-3.323 1.297s-2.448-.49-3.323-1.297c-.807-.875-1.297-2.026-1.297-3.323s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323c-.875.807-2.026 1.297-3.323 1.297z"/>
+    </svg>`
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/creadores_series",
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+    </svg>`
+  }
+];
+---
+
+<footer class="bg-background-secondary border-t border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid md:grid-cols-4 gap-8">
+      <!-- Logo and Description -->
+      <div class="md:col-span-2">
+        <div class="flex items-center space-x-2 mb-4">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+            <img src="/images/logos/logo_creadores.png" alt="Logo" class="w-full h-full object-contain">
+          </div>
+          <span class="text-white font-gaming font-bold text-xl">CREADORES</span>
+        </div>
+        <p class="text-text-secondary mb-6 max-w-md">
+          Una serie documental sobre los desarrolladores de videojuegos en Chile. 
+          Sigue el proceso creativo de los desarrolladores chilenos, sus sueños y frustraciones.
+        </p>
+        <div class="flex space-x-4">
+          {socialLinks.map((social) => (
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-background-primary border border-border rounded-lg flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary transition-all duration-300"
+              title={social.name}
+              set:html={social.icon}
+            >
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-white font-gaming font-bold mb-4">Enlaces</h4>
+        <ul class="space-y-2">
+          <li>
+            <a href="#sobre" class="text-text-secondary hover:text-primary transition-colors duration-300">
+              Sobre la Serie
+            </a>
+          </li>
+          <li>
+            <a href="#produccion" class="text-text-secondary hover:text-primary transition-colors duration-300">
+              Producción
+            </a>
+          </li>
+          <li>
+            <a href="#equipo" class="text-text-secondary hover:text-primary transition-colors duration-300">
+              Equipo
+            </a>
+          </li>
+          <li>
+            <a href="#medios" class="text-text-secondary hover:text-primary transition-colors duration-300">
+              Medios
+            </a>
+          </li>
+          <li>
+            <a href="#prensa" class="text-text-secondary hover:text-primary transition-colors duration-300">
+              Prensa
+            </a>
+          </li>
+          <li>
+            <a href="#contacto" class="text-text-secondary hover:text-primary transition-colors duration-300">
+              Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-white font-gaming font-bold mb-4">Contacto</h4>
+        <div class="space-y-2">
+          <div class="text-text-secondary">
+            <div class="font-medium">Email</div>
+            <div>ciudadcultural.cl@gmail.com</div>
+          </div>
+          <div class="text-text-secondary">
+            <div class="font-medium">Teléfono</div>
+            <div>+56 963047502</div>
+          </div>
+          <div class="text-text-secondary">
+            <div class="font-medium">Empresa</div>
+            <div>Ciudad Cultural Producciones Spa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Institutional Support -->
+    <div class="mt-12 pt-8 border-t border-border">
+      <div class="text-center">
+        <h4 class="text-white font-gaming font-bold mb-6">Con el Apoyo de</h4>
+        <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+              <a href="https://www.cultura.gob.cl/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/images/logos/Logo_del_Ministerio_de_las_Culturas,_las_Artes_y_el_Patrimonio_de_Chile.png"
+                alt="Logo del Ministerio de las Culturas, las Artes y el Patrimonio de Chile"
+                class="object-contain w-10 h-10"
+                loading="lazy"
+                width="40"
+                height="40"
+              />
+              </a>
+            </div>
+            <span class="text-text-secondary font-medium">Ministerio de las Culturas, las Artes y el Patrimonio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 pt-8 border-t border-border">
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div class="text-text-secondary text-sm">
+          © {currentYear} Ciudad Cultural Producciones Spa. Todos los derechos reservados.
+        </div>
+        <div class="flex space-x-6 text-sm">
+          <a href="#" class="text-text-secondary hover:text-primary transition-colors duration-300">
+            Política de Privacidad
+          </a>
+          <a href="#" class="text-text-secondary hover:text-primary transition-colors duration-300">
+            Términos de Uso
+          </a>
+          <a href="#" class="text-text-secondary hover:text-primary transition-colors duration-300">
+            Sitemap
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> 

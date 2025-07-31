@@ -1,0 +1,14 @@
+# Configuración de Cursor AI para Landing page serie Creadores
+
+Proyecto: Landing Page para webserie Creadores.
+
+## Archivos de contexto
+- Información del proyecto: /context/project-overview.md
+- Diseño UI/UX: /context/ui.md
+- Detalles técnicos: /context/technical.md
+- Testing: /context/testing.md
+
+## Instrucciones generales
+- Usar TypeScript estricto en todos los archivos.
+- Convención de nombres: camelCase para variables, PascalCase para componentes.
+- Consultar archivos de contexto para sugerencias de código específicas.
