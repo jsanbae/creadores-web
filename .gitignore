@@ -53,3 +53,4 @@ coverage/
 
 # Optional: ignore production images (uncomment if needed)
 # public/images/
+.vercel
