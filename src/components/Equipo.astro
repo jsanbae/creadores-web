@@ -2,68 +2,89 @@
 const equipo = {
   productora: {
     nombre: "Ciudad Cultural Producciones Spa",
-    descripcion: "Productora ejecutora del proyecto"
+    descripcion: "Productora ejecutora del proyecto",
   },
   creativo: [
     {
       nombre: "Sebastián Cartajena Alvarado",
       rol: "Director",
-      descripcion: "Director creativo de la serie documental"
+      descripcion: "Director creativo de la serie documental",
+      foto: "/images/staff/sebastian-cartajena.jpg",
     },
     {
       nombre: "Alexis Sánchez Baeza",
       rol: "Productor Ejecutivo",
-      descripcion: "Responsable de la producción ejecutiva"
+      descripcion: "Responsable de la producción ejecutiva",
+      foto: "/images/staff/alexis-sanchez.jpg",
     },
     {
       nombre: "Pachi Bustos Peñafiel",
       rol: "Directora de Producción",
-      descripcion: "Coordinación general de la producción"
+      descripcion: "Coordinación general de la producción",
+      foto: "/images/staff/pachi-bustos.jpg",
     },
     {
       nombre: "Gonzalo De la Jara",
       rol: "Guionista",
-      descripcion: "Desarrollo de guiones y narrativa"
+      descripcion: "Desarrollo de guiones y narrativa",
+      foto: "/images/staff/gonzalo-de-la-jara.jpg",
     },
     {
       nombre: "Loreto Contreras Valdés",
       rol: "Investigadora",
-      descripcion: "Investigación y desarrollo de contenido"
-    }
+      descripcion: "Investigación y desarrollo de contenido",
+      foto: "/images/staff/loreto-contreras.png",
+    },
   ],
   tecnico: [
     {
       nombre: "Víctor Quezada",
       rol: "Director de Fotografía",
-      descripcion: "Dirección visual y cinematografía"
+      descripcion: "Dirección visual y cinematografía",
+      foto: "/images/staff/victor-quezada.jpg",
     },
     {
       nombre: "María Teresa Viera-Gallo",
       rol: "Montajista",
-      descripcion: "Edición y post-producción"
+      descripcion: "Edición y post-producción",
+      foto: "/images/staff/maria-teresa-viera-gallo.jpg",
     },
     {
       nombre: "Víctor Quezada",
       rol: "Montajista",
-      descripcion: "Edición y post-producción"
+      descripcion: "Edición y post-producción",
+      foto: "/images/staff/victor-quezada.jpg",
     },
     {
       nombre: "María Jesús Saíz",
       rol: "Sonidista",
-      descripcion: "Diseño y grabación de sonido"
+      descripcion: "Diseño y grabación de sonido",
+      foto: "/images/staff/maria-jesus-saiz.jpg",
     },
     {
       nombre: "Cristián Arias",
       rol: "Sonidista",
-      descripcion: "Diseño y grabación de sonido"
+      descripcion: "Diseño y grabación de sonido",
+      foto: "/images/staff/cristian-arias.jpg",
     },
     {
       nombre: "Juan José Barros",
       rol: "Asistente de Producción",
-      descripcion: "Apoyo en coordinación de producción"
-    }
-  ]
+      descripcion: "Apoyo en coordinación de producción",
+      foto: "/images/staff/juan-jose-barros.jpg",
+    },
+  ],
 };
+
+function iniciales(nombre: string) {
+  return nombre
+    .split(/\s+/)
+    .filter((part) => !/^(de|la|del|los|las|y)$/i.test(part))
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+}
 ---
 
 <section id="equipo" class="py-20 bg-background-secondary">
@@ -75,12 +96,11 @@ const equipo = {
       <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
     </div>
 
-    <!-- Productora -->
     <div class="mb-16">
       <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-8 text-center">
         Productora
       </h3>
-      <div class="bg-background-primary rounded-lg p-8 border border-border text-center">
+      <div class="max-w-xl mx-auto bg-background-primary rounded-lg p-8 border border-border text-center">
         <div class="w-28 h-28 mx-auto mb-6 overflow-hidden rounded-lg flex items-center justify-center bg-background-secondary border border-border">
           <img
             src="/images/logos/ciudad_cultural.jpg"
@@ -96,66 +116,118 @@ const equipo = {
       </div>
     </div>
 
-    <!-- Equipo Creativo -->
     <div class="mb-16">
       <h3 class="text-2xl md:text-3xl font-gaming font-bold text-secondary mb-8 text-center">
         Equipo Creativo
       </h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {equipo.creativo.map((miembro) => (
-          <div class="bg-background-primary rounded-lg p-6 border border-border hover:border-primary transition-all duration-300 transform hover:scale-105">
-            <div class="text-center">
-              <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-on-secondary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                </svg>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          equipo.creativo.map((miembro) => (
+            <article class="equipo-card group relative isolate aspect-[3/4] overflow-hidden rounded-xl border border-border hover:border-secondary/60 transition-colors duration-200">
+              {
+                miembro.foto ? (
+                  <img
+                    src={miembro.foto}
+                    alt={`Foto de ${miembro.nombre}`}
+                    class="equipo-photo absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 ease-out"
+                    width="640"
+                    height="800"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div
+                    class="absolute inset-0 flex items-center justify-center bg-background-primary font-gaming text-4xl font-bold text-text-secondary"
+                    aria-hidden="true"
+                  >
+                    {iniciales(miembro.nombre)}
+                  </div>
+                )
+              }
+              <div
+                class="equipo-scrim pointer-events-none absolute inset-0"
+                aria-hidden="true"
+              ></div>
+              <div class="equipo-copy absolute inset-x-0 bottom-0 z-10 p-5 md:p-6">
+                <p class="text-secondary text-sm font-bold mb-1">{miembro.rol}</p>
+                <h4 class="text-lg md:text-xl font-gaming font-bold text-white leading-snug mb-2">
+                  {miembro.nombre}
+                </h4>
+                <p class="text-text-secondary text-sm leading-relaxed">{miembro.descripcion}</p>
               </div>
-              <h4 class="text-lg font-gaming font-bold text-white mb-1">{miembro.nombre}</h4>
-              <div class="text-primary font-bold mb-2">{miembro.rol}</div>
-              <p class="text-text-secondary text-sm">{miembro.descripcion}</p>
-            </div>
-          </div>
-        ))}
+            </article>
+          ))
+        }
       </div>
     </div>
 
-    <!-- Equipo Técnico -->
     <div>
       <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-8 text-center">
         Equipo Técnico
       </h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {equipo.tecnico.map((miembro) => (
-          <div class="bg-background-primary rounded-lg p-6 border border-border hover:border-secondary transition-all duration-300 transform hover:scale-105">
-            <div class="text-center">
-              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-on-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
-                </svg>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          equipo.tecnico.map((miembro) => (
+            <article class="equipo-card group relative isolate aspect-[3/4] overflow-hidden rounded-xl border border-border hover:border-primary/60 transition-colors duration-200">
+              {
+                miembro.foto ? (
+                  <img
+                    src={miembro.foto}
+                    alt={`Foto de ${miembro.nombre}`}
+                    class="equipo-photo absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 ease-out"
+                    width="640"
+                    height="800"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div
+                    class="absolute inset-0 flex items-center justify-center bg-background-primary font-gaming text-4xl font-bold text-text-secondary"
+                    aria-hidden="true"
+                  >
+                    {iniciales(miembro.nombre)}
+                  </div>
+                )
+              }
+              <div
+                class="equipo-scrim pointer-events-none absolute inset-0"
+                aria-hidden="true"
+              ></div>
+              <div class="equipo-copy absolute inset-x-0 bottom-0 z-10 p-5 md:p-6">
+                <p class="text-primary text-sm font-bold mb-1">{miembro.rol}</p>
+                <h4 class="text-lg md:text-xl font-gaming font-bold text-white leading-snug mb-2">
+                  {miembro.nombre}
+                </h4>
+                <p class="text-text-secondary text-sm leading-relaxed">{miembro.descripcion}</p>
               </div>
-              <h4 class="text-lg font-gaming font-bold text-white mb-1">{miembro.nombre}</h4>
-              <div class="text-secondary font-bold mb-2">{miembro.rol}</div>
-              <p class="text-text-secondary text-sm">{miembro.descripcion}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Stats -->
-    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-gaming font-bold text-primary mb-2">11</div>
-        <div class="text-text-secondary">Profesionales</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-gaming font-bold text-secondary mb-2">3</div>
-        <div class="text-text-secondary">Áreas de Especialización</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-gaming font-bold text-primary mb-2">100%</div>
-        <div class="text-text-secondary">Chilenos</div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </div>
-</section> 
+</section>
+
+<style>
+  .equipo-scrim {
+    background: linear-gradient(
+      to top,
+      rgba(26, 15, 43, 0.98) 0%,
+      rgba(26, 15, 43, 0.88) 28%,
+      rgba(26, 15, 43, 0.35) 52%,
+      transparent 72%
+    );
+  }
+
+  .equipo-copy {
+    text-shadow: 0 1px 12px rgba(26, 15, 43, 0.7);
+  }
+
+  .equipo-card:hover .equipo-photo {
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .equipo-card:hover .equipo-photo {
+      transform: none;
+    }
+  }
+</style>

@@ -9,6 +9,12 @@ const navItems = [
   { href: '#prensa', label: 'Prensa' },
   { href: '#contacto', label: 'Contacto' },
 ];
+
+const navLinkClass =
+  'nav-link text-text-secondary hover:text-primary px-3 py-2 min-h-11 inline-flex items-center rounded-md text-sm font-medium transition-colors duration-200 relative after:absolute after:left-3 after:right-3 after:bottom-1 after:h-0.5 after:rounded-full after:bg-primary after:origin-left after:scale-x-0 after:transition-transform after:duration-200 aria-[current=true]:text-primary aria-[current=true]:after:scale-x-100';
+
+const mobileNavLinkClass =
+  'nav-link text-text-secondary hover:text-primary block px-3 py-3 min-h-11 rounded-md text-base font-medium transition-colors duration-200 aria-[current=true]:text-primary aria-[current=true]:bg-primary/10';
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-background-primary/95 backdrop-blur-md border-b border-border" aria-label="Principal">
@@ -36,7 +42,8 @@ const navItems = [
           {navItems.map((item) => (
             <a
               href={item.href}
-              class="text-text-secondary hover:text-primary px-3 py-2 min-h-11 inline-flex items-center rounded-md text-sm font-medium transition-colors duration-200"
+              class={navLinkClass}
+              data-nav-link
             >
               {item.label}
             </a>
@@ -66,7 +73,8 @@ const navItems = [
       {navItems.map((item) => (
         <a
           href={item.href}
-          class="text-text-secondary hover:text-primary block px-3 py-3 min-h-11 rounded-md text-base font-medium transition-colors duration-200"
+          class={mobileNavLinkClass}
+          data-nav-link
         >
           {item.label}
         </a>
@@ -78,6 +86,43 @@ const navItems = [
 <script>
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'));
+  const sectionIds = navLinks
+    .map((link) => link.getAttribute('href')?.slice(1))
+    .filter((id): id is string => Boolean(id));
+  const uniqueSectionIds = [...new Set(sectionIds)];
+
+  function setActiveSection(sectionId: string) {
+    navLinks.forEach((link) => {
+      const href = link.getAttribute('href');
+      const isActive = href === `#${sectionId}`;
+      if (isActive) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function getSectionFromScroll(): string {
+    const navOffset = 96;
+    let current = uniqueSectionIds[0] ?? 'home';
+
+    for (const id of uniqueSectionIds) {
+      const section = document.getElementById(id);
+      if (!section) continue;
+      const top = section.getBoundingClientRect().top;
+      if (top - navOffset <= 0) {
+        current = id;
+      }
+    }
+
+    return current;
+  }
+
+  function syncActiveFromScroll() {
+    setActiveSection(getSectionFromScroll());
+  }
 
   if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', () => {
@@ -94,6 +139,12 @@ const navItems = [
       const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
+
+      const sectionId = href.slice(1);
+      if (uniqueSectionIds.includes(sectionId)) {
+        setActiveSection(sectionId);
+      }
+
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       target.scrollIntoView({
         behavior: prefersReduced ? 'auto' : 'smooth',
@@ -106,4 +157,33 @@ const navItems = [
       }
     });
   });
+
+  let ticking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        syncActiveFromScroll();
+        ticking = false;
+      });
+    },
+    { passive: true }
+  );
+
+  window.addEventListener('hashchange', () => {
+    const id = window.location.hash.slice(1);
+    if (id && uniqueSectionIds.includes(id)) {
+      setActiveSection(id);
+    } else {
+      syncActiveFromScroll();
+    }
+  });
+
+  const initialHash = window.location.hash.slice(1);
+  if (initialHash && uniqueSectionIds.includes(initialHash)) {
+    setActiveSection(initialHash);
+  }
+  syncActiveFromScroll();
 </script>
