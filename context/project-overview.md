@@ -34,16 +34,17 @@
 ## 3. PRODUCCIÓN
 
 ### Estado Actual
+- **Estado**: Proyecto finalizado en septiembre de 2026
 - **Financiamiento**: Fondo Audiovisual del Ministerio de las Culturas
 - **Desarrollo 2021-2022**: Escritura del primer capítulo e investigación
-- **Producción actual**: 6 capítulos en desarrollo
-- **Estreno esperado**: Segundo semestre de 2025
+- **Primera temporada**: 6 capítulos completos y disponibles
 
 ### Cronología del Proyecto
 - **2021**: Financiamiento inicial - Fondo de Fortalecimiento
 - **2022**: Desarrollo de escritura y investigación
 - **2022**: Selección para webseries documental
 - **2023-2025**: Producción de 6 capítulos
+- **Septiembre 2026**: Proyecto finalizado — primera temporada completa
 
 ## 4. EQUIPO
 

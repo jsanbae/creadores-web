@@ -6,6 +6,8 @@ export default {
       colors: {
         primary: '#00b4ec',
         secondary: '#ff3f26',
+        'on-primary': '#0B0614',
+        'on-secondary': '#0B0614',
         background: {
           primary: '#1A0F2B',
           secondary: '#12091C',
@@ -20,20 +22,21 @@ export default {
         error: '#e74c3c',
       },
       fontFamily: {
-        'gaming': ['Orbitron', 'monospace'],
-        'pixel': ['Press Start 2P', 'monospace'],
+        sans: ['Sora', 'system-ui', 'sans-serif'],
+        gaming: ['Orbitron', 'system-ui', 'sans-serif'],
+        pixel: ['Press Start 2P', 'monospace'],
       },
       animation: {
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        glow: 'glow 2s ease-out infinite alternate',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 5px #00b4ec, 0 0 10px #00b4ec, 0 0 15px #00b4ec' },
-          '100%': { boxShadow: '0 0 10px #00b4ec, 0 0 20px #00b4ec, 0 0 30px #00b4ec' },
+          '0%': { boxShadow: '0 2px 8px rgba(0, 180, 236, 0.35)' },
+          '100%': { boxShadow: '0 4px 16px rgba(0, 180, 236, 0.55)' },
         },
       },
     },
   },
   plugins: [],
-} 
+};

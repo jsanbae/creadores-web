@@ -1,0 +1,230 @@
+---
+const capitulos = [
+  { number: 1, id: "qe2u4SlEbJA", title: "Bruma" },
+  { number: 2, id: "0yTVnirfczY", title: "Cangrejo Ideas" },
+  { number: 3, id: "l8BGCPu_xR0", title: "Margarita Chris" },
+  { number: 4, id: "leLLMHbDjrY", title: "Sven Von Brand" },
+  { number: 5, id: "SKlGbbOlPNg", title: "AceTeam" },
+  { number: 6, id: "vlfJH-wLK3M", title: "Claudio Bustamante" },
+];
+
+const total = capitulos.length;
+---
+
+<section id="capitulos" class="py-20 bg-background-primary">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-4xl md:text-5xl font-gaming font-bold text-white mb-6">
+        Capítulos
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
+        Primera temporada completa. Reproduce cada capítulo aquí, sin salir del sitio.
+      </p>
+    </div>
+
+    <div
+      id="capitulos-carousel"
+      class="capitulos-carousel"
+      role="region"
+      aria-roledescription="carrusel"
+      aria-label="Capítulos de la serie CREADORES"
+      data-total={total}
+    >
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <button
+          type="button"
+          class="capitulos-prev inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border bg-background-secondary text-text-secondary hover:border-primary hover:text-primary transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          aria-controls="capitulos-viewport"
+          aria-label="Capítulo anterior"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div class="text-center min-w-0 flex-1" aria-live="polite">
+          <p class="text-primary font-gaming text-sm font-bold tracking-wide mb-1">
+            Capítulo <span id="capitulos-index">1</span> / {total}
+          </p>
+          <h3 id="capitulos-title" class="text-xl md:text-2xl font-gaming font-bold text-white truncate">
+            {capitulos[0].title}
+          </h3>
+        </div>
+
+        <button
+          type="button"
+          class="capitulos-next inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border bg-background-secondary text-text-secondary hover:border-primary hover:text-primary transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          aria-controls="capitulos-viewport"
+          aria-label="Capítulo siguiente"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id="capitulos-viewport"
+        class="relative aspect-video overflow-hidden rounded-lg border border-border bg-background-secondary"
+      >
+        <iframe
+          id="capitulos-player"
+          class="absolute inset-0 h-full w-full"
+          src={`https://www.youtube-nocookie.com/embed/${capitulos[0].id}?rel=0`}
+          title={`Capítulo 1: ${capitulos[0].title} — CREADORES`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        />
+      </div>
+
+      <div
+        class="mt-6 flex flex-wrap justify-center gap-2"
+        role="tablist"
+        aria-label="Elegir capítulo"
+      >
+        {capitulos.map((cap, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`capitulo-tab-${cap.number}`}
+            class="capitulos-tab inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border px-3 font-gaming text-sm font-bold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            data-index={index}
+            data-id={cap.id}
+            data-number={cap.number}
+            data-title={cap.title}
+            aria-label={`Capítulo ${cap.number}: ${cap.title}`}
+            aria-selected={index === 0 ? "true" : "false"}
+            aria-controls="capitulos-viewport"
+            tabindex={index === 0 ? 0 : -1}
+          >
+            {cap.number}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .capitulos-tab {
+    border-color: #2e2e3e;
+    background: #12091c;
+    color: #d6d6d6;
+  }
+
+  .capitulos-tab[aria-selected="true"] {
+    border-color: #00b4ec;
+    background: #00b4ec;
+    color: #0b0614;
+  }
+
+  .capitulos-tab:hover:not([aria-selected="true"]) {
+    border-color: #00b4ec;
+    color: #00b4ec;
+  }
+</style>
+
+<script>
+  const root = document.getElementById('capitulos-carousel');
+  if (root) {
+    const player = document.getElementById('capitulos-player') as HTMLIFrameElement | null;
+    const titleEl = document.getElementById('capitulos-title');
+    const indexEl = document.getElementById('capitulos-index');
+    const prevBtn = root.querySelector('.capitulos-prev') as HTMLButtonElement | null;
+    const nextBtn = root.querySelector('.capitulos-next') as HTMLButtonElement | null;
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('.capitulos-tab')];
+    const total = Number(root.dataset.total || tabs.length);
+    let current = 0;
+
+    const prefersReduced = () =>
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function goTo(index: number) {
+      const next = ((index % total) + total) % total;
+      const tab = tabs[next];
+      if (!tab || !player) return;
+
+      current = next;
+      const number = tab.dataset.number || String(next + 1);
+      const id = tab.dataset.id || '';
+      const title = tab.dataset.title || `Capítulo ${number}`;
+
+      player.src = `https://www.youtube-nocookie.com/embed/${id}?rel=0`;
+      player.title = `Capítulo ${number}: ${title} — CREADORES`;
+
+      if (titleEl) titleEl.textContent = title;
+      if (indexEl) indexEl.textContent = number;
+
+      tabs.forEach((item, i) => {
+        const selected = i === current;
+        item.setAttribute('aria-selected', selected ? 'true' : 'false');
+        item.tabIndex = selected ? 0 : -1;
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        goTo(Number(tab.dataset.index || 0));
+      });
+
+      tab.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+          event.preventDefault();
+          goTo(current + 1);
+          tabs[current]?.focus();
+        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          goTo(current - 1);
+          tabs[current]?.focus();
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          goTo(0);
+          tabs[0]?.focus();
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          goTo(total - 1);
+          tabs[total - 1]?.focus();
+        }
+      });
+    });
+
+    root.addEventListener('keydown', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('iframe') || target.classList.contains('capitulos-tab')) return;
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goTo(current - 1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goTo(current + 1);
+      }
+    });
+
+    // Light swipe on the player frame (not inside YouTube controls after play)
+    let touchStartX = 0;
+    const viewport = document.getElementById('capitulos-viewport');
+    viewport?.addEventListener(
+      'touchstart',
+      (event) => {
+        touchStartX = event.changedTouches[0]?.clientX ?? 0;
+      },
+      { passive: true }
+    );
+    viewport?.addEventListener(
+      'touchend',
+      (event) => {
+        if (prefersReduced()) return;
+        const endX = event.changedTouches[0]?.clientX ?? 0;
+        const delta = endX - touchStartX;
+        if (Math.abs(delta) < 56) return;
+        goTo(delta < 0 ? current + 1 : current - 1);
+      },
+      { passive: true }
+    );
+  }
+</script>

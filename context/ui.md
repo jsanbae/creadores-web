@@ -89,7 +89,7 @@
 
 - **Home**: Sección Hero con titulo y subtitulo .
 - **Sobre la Serie**: Información sobre la serie.
-- **Producción**: Estado actual de la producción del proyecto.
+- **Producción**: Cronología y estado del proyecto (finalizado sept. 2026).
 - **Equipo**: Integrantes del equipo.
 - **Medios**: Galeria de imagenes y video del trailer.
 - **Prensa**: Apariciones en medios.

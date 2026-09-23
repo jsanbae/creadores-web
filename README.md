@@ -85,9 +85,10 @@ src/
 - Video destacado
 
 ### 🎬 Producción
-- Estado actual del proyecto
+- Proyecto finalizado (septiembre 2026)
 - Cronología del desarrollo
 - Información de financiamiento
+- Primera temporada: 6 capítulos disponibles
 
 ### 👥 Equipo
 - Productora

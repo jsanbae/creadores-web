@@ -1,6 +1,4 @@
 ---
-const trailerUrl = "https://www.youtube.com/watch?v=E-_-3Y3YGRA";
-
 // Gallery images from /public/images/gallery
 const galleryImages = [
   { src: "/images/gallery/CREADORES_1.1.1.jpg", alt: "Serie Creadores - Escena 1" },
@@ -88,45 +86,20 @@ const galleryImages = [
       <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
     </div>
 
-    <!-- Video Content -->
-    <div class="mb-16">
-      <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-8 text-center">
-        Video Content
+    <!-- Trailer pointer -->
+    <div class="mb-16 text-center">
+      <h3 class="text-2xl md:text-3xl font-gaming font-bold text-primary mb-4">
+        Tráiler Oficial
       </h3>
-      <div class="grid lg:grid-cols-2 gap-8 items-center">
-        <div>
-          <h4 class="text-xl font-gaming font-bold text-white mb-4">Tráiler Oficial</h4>
-          <p class="text-text-secondary mb-6">
-            Descubre la historia detrás de los desarrolladores de videojuegos chilenos. 
-            Un viaje íntimo a través de sus sueños, frustraciones y la esperanza de convertirse 
-            en verdaderos creadores.
-          </p>
-          <a
-            href={trailerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center px-6 py-3 bg-primary hover:bg-secondary text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105"
-          >
-            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-            </svg>
-            Ver en YouTube
-          </a>
-        </div>
-        <div class="bg-background-secondary rounded-lg overflow-hidden shadow-2xl">
-          <div class="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-            <div class="text-center">
-              <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <h5 class="text-lg font-gaming font-bold text-white mb-2">Tráiler Oficial</h5>
-              <p class="text-text-secondary text-sm">Disponible en YouTube</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="text-text-secondary mb-6 max-w-2xl mx-auto">
+        El tráiler se reproduce en la página, en Sobre la Serie.
+      </p>
+      <a
+        href="#trailer"
+        class="inline-flex min-h-11 items-center px-6 py-3 bg-primary hover:brightness-110 text-on-primary font-bold rounded-lg transition-colors duration-200"
+      >
+        Ver tráiler
+      </a>
     </div>
 
     <!-- Gallery -->
@@ -155,7 +128,10 @@ const galleryImages = [
                 src={image.src} 
                 alt={image.alt} 
                 class="w-full h-full object-cover"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="400"
               >
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                 <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -175,7 +151,8 @@ const galleryImages = [
          </p>
          <button 
            id="exploreGalleryBtn"
-           class="inline-flex items-center px-6 py-3 bg-secondary hover:bg-primary text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105"
+           type="button"
+           class="inline-flex min-h-11 items-center px-6 py-3 bg-secondary hover:brightness-110 text-on-secondary font-bold rounded-lg transition-colors duration-200"
          >
            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
              <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
@@ -277,11 +254,11 @@ const galleryImages = [
     lightboxModal.className = 'fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center';
     lightboxModal.innerHTML = `
       <div class="relative max-w-4xl max-h-full mx-4">
-        <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 z-10">&times;</button>
-        <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-10">&lt;</button>
-        <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-10">&gt;</button>
+        <button type="button" id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 z-10 min-h-11 min-w-11" aria-label="Cerrar galería">&times;</button>
+        <button type="button" id="prev-image" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-10 min-h-11 min-w-11" aria-label="Imagen anterior">&lt;</button>
+        <button type="button" id="next-image" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-10 min-h-11 min-w-11" aria-label="Imagen siguiente">&gt;</button>
         <div class="text-center">
-          <img id="lightbox-image" class="max-w-full max-h-[80vh] object-contain" src="" alt="">
+          <img id="lightbox-image" class="max-w-full max-h-[80vh] object-contain" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
           <div id="lightbox-caption" class="text-white mt-4 text-lg"></div>
           <div id="lightbox-counter" class="text-white mt-2 text-sm opacity-75"></div>
         </div>
