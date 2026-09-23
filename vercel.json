@@ -1,7 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".vercel/output/static",
-  "framework": "astro",
   "headers": [
     {
       "source": "/_astro/(.*)",
@@ -12,11 +9,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/_astro/(.*)",
-      "destination": "/_astro/$1"
-    }
   ]
-} 
+}

@@ -18,7 +18,6 @@ docs/
 .DS_Store
 
 # Astro
-astro.config.mjs
 /.astro/
 
 # VSCode
