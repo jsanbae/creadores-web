@@ -1,4 +1,6 @@
 ---
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+
 const socialLinks = [
   {
     name: "YouTube",
@@ -24,13 +26,17 @@ const fieldClass =
           Envíanos un Mensaje
         </h3>
         <p class="text-text-secondary mb-8">
-          Se abrirá tu cliente de correo con el mensaje listo para enviar a la productora.
+          Completa el formulario y te responderemos a la brevedad.
         </p>
         <form id="contact-form" class="space-y-6" novalidate>
+          <input type="hidden" name="access_key" value={accessKey} />
+          <input type="hidden" name="from_name" value="CREADORES — Sitio web" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label for="nombre" class="block text-text-secondary font-medium mb-2">Nombre</label>
-              <input type="text" id="nombre" name="nombre" class={fieldClass} placeholder="Tu nombre" required autocomplete="name" />
+              <input type="text" id="nombre" name="name" class={fieldClass} placeholder="Tu nombre" required autocomplete="name" />
             </div>
             <div>
               <label for="email" class="block text-text-secondary font-medium mb-2">Email</label>
@@ -49,18 +55,19 @@ const fieldClass =
           </div>
           <div>
             <label for="mensaje" class="block text-text-secondary font-medium mb-2">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="6" class={`${fieldClass} resize-none`} placeholder="Escribe tu mensaje aquí..." required></textarea>
+            <textarea id="mensaje" name="message" rows="6" class={`${fieldClass} resize-none`} placeholder="Escribe tu mensaje aquí..." required></textarea>
           </div>
           <p id="contact-form-status" class="text-sm text-text-secondary" role="status" aria-live="polite"></p>
           <button
             type="submit"
-            class="w-full min-h-11 px-8 py-3.5 bg-primary hover:brightness-110 text-on-primary font-bold text-lg rounded-lg transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            id="contact-form-submit"
+            class="w-full min-h-11 px-8 py-3.5 bg-primary hover:brightness-110 text-on-primary font-bold text-lg rounded-lg transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-60 disabled:cursor-not-allowed"
           >
             <span class="flex items-center justify-center space-x-2">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Abrir correo para enviar</span>
+              <span id="contact-form-submit-label">Enviar mensaje</span>
             </span>
           </button>
         </form>
@@ -150,33 +157,65 @@ const fieldClass =
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const status = document.getElementById('contact-form-status');
+  const submitBtn = document.getElementById('contact-form-submit') as HTMLButtonElement | null;
+  const submitLabel = document.getElementById('contact-form-submit-label');
 
-  form?.addEventListener('submit', (event) => {
+  const setStatus = (message: string, tone: 'neutral' | 'success' | 'error' = 'neutral') => {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove('text-text-secondary', 'text-success', 'text-error');
+    if (tone === 'success') status.classList.add('text-success');
+    else if (tone === 'error') status.classList.add('text-error');
+    else status.classList.add('text-text-secondary');
+  };
+
+  const setLoading = (loading: boolean) => {
+    if (submitBtn) submitBtn.disabled = loading;
+    if (submitLabel) submitLabel.textContent = loading ? 'Enviando…' : 'Enviar mensaje';
+  };
+
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
+
     if (!form.checkValidity()) {
       form.reportValidity();
-      if (status) status.textContent = 'Revisa los campos marcados e inténtalo de nuevo.';
+      setStatus('Revisa los campos marcados e inténtalo de nuevo.', 'error');
       return;
     }
 
-    const data = new FormData(form);
-    const nombre = String(data.get('nombre') || '').trim();
-    const email = String(data.get('email') || '').trim();
-    const asunto = String(data.get('asunto') || '').trim();
-    const mensaje = String(data.get('mensaje') || '').trim();
+    const accessKeyInput = form.querySelector('input[name="access_key"]') as HTMLInputElement | null;
+    if (!accessKeyInput?.value) {
+      setStatus(
+        'El formulario aún no está configurado. Agrega PUBLIC_WEB3FORMS_ACCESS_KEY en las variables de entorno.',
+        'error',
+      );
+      return;
+    }
 
-    const body = [
-      `Nombre: ${nombre}`,
-      `Email: ${email}`,
-      '',
-      mensaje,
-    ].join('\n');
+    const asunto = String(new FormData(form).get('asunto') || '').trim();
+    const payload = new FormData(form);
+    payload.set('subject', `CREADORES — ${asunto}`);
 
-    const mailto = `mailto:ciudadcultural.cl@gmail.com?subject=${encodeURIComponent(`CREADORES — ${asunto}`)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    setLoading(true);
+    setStatus('Enviando tu mensaje…');
 
-    if (status) {
-      status.textContent = 'Si no se abrió tu correo, escribe a ciudadcultural.cl@gmail.com.';
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: payload,
+      });
+      const result = (await response.json()) as { success?: boolean; message?: string };
+
+      if (response.ok && result.success) {
+        form.reset();
+        setStatus('Mensaje enviado. Te responderemos pronto.', 'success');
+      } else {
+        setStatus(result.message || 'No se pudo enviar el mensaje. Inténtalo de nuevo.', 'error');
+      }
+    } catch {
+      setStatus('Error de conexión. Revisa tu internet e inténtalo de nuevo.', 'error');
+    } finally {
+      setLoading(false);
     }
   });
 </script>
